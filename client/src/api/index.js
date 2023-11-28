@@ -48,6 +48,9 @@ const Api = {
     },
     createUser: async (name, email, password) => {
         return await Api.call(`api/users/`, 'POST', {name, email, password });
+    },
+    createTicket: async (userId, title, urgency, description) =>{
+        return await Api.call(`api/tickets/`, 'POST', {userId, title, urgency, description});
     }
 };
 

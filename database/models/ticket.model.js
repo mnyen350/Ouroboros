@@ -5,17 +5,16 @@ const ticketSchema = new Schema({
     description: { type: String, trim: true, required: 'Description is required'},
     status: {
         type: String,
-        default: 'Open',
-        enum: ['Open', 'In Progress', 'Closed']
+        default: 'open',
+        enum: ['open', 'inprogress', 'closed']
     },
     created: { type: Date, default: Date.now },
-    updated: Date,
-    photo: { data: Buffer, contentType: String },
-    postedBy: { type: Schema.ObjectId, ref: 'User' },
+    updated: { type: Date, default: Date.now },
+    postedBy: { type: Schema.ObjectId, ref: 'users' },
     urgency: {
         type: String,
-        default: 'Low',
-        enum: ['Low', 'Medium', 'High']
+        default: 'low',
+        enum: ['low', 'medium', 'high']
     }
 });
 

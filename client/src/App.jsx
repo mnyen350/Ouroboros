@@ -10,7 +10,7 @@ import TicketPage from './components/pages/TicketPage';
 import ProfilePage from './components/pages/ProfilePage';
 
 function App() {
-  const [isHalf, setIsHalf] = useState(true);
+  const [isHalf, setIsHalf] = useState(false);
   return (
     <BrowserRouter>
       <Routes>

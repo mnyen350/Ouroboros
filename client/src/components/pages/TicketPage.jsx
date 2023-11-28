@@ -1,8 +1,10 @@
 import CreateTicket from '../forms/CreateTicket';
-import DisplayTickets from '../DisplayTickets';
+import Ticket from '../Ticket';
 
 function TicketPage({ setIsHalf }) {
-    setIsHalf(false);
+    //setIsHalf(false);
+
+    let tickets = ["hi", "mary", "bob", "blue", "reeee"];
 
     return (
         <>
@@ -13,7 +15,7 @@ function TicketPage({ setIsHalf }) {
 
             <div className="mt-5 d-grid gap-2 col-6 mx-auto text-center">
                 <h5>Current Ticket</h5>
-                <DisplayTickets />
+                {tickets.map((t,i) => <Ticket key={i} />)}
             </div>
         </>
     );

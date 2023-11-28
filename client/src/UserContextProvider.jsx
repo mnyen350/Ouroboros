@@ -38,6 +38,10 @@ function UserContextProvider({ children }) {
         }
         return res;
     }
+    async function createTicket(title, urgency, description){
+        const res = await Api.createTicket(user._id, title, urgency, description);
+        return res;
+    }
 
     const values = useMemo(() => {
         return {
@@ -45,7 +49,8 @@ function UserContextProvider({ children }) {
             signInUser,
             signOutUser,
             updateUser,
-            createUser
+            createUser,
+            createTicket
         }
     }, [user]);
 

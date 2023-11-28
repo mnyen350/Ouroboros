@@ -6,8 +6,7 @@
     "generate-jwt": "node generatejwtsecret.js",
     "start": "(node init.js) && (node ./bin/www)",
     "build-start": "(cd client) && (npm run build) && (cd ..) && (npm run start)",
-    "dev-client2": "(cd client2) && (npm run dev)",
-    "build-start-client2": "(cd client2) && (npm run build) && (cd ..) && (npm run start)"
+    "dev-client": "(cd client) && (npm run dev)"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

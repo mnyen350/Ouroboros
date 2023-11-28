@@ -52,9 +52,7 @@ function Profile() {
 
     return (
         <>
-            <div className="text-center">
-                <h3>Profile</h3>
-            </div>
+           
 
             <form className="m-5">
                 <div className="row mb-3">

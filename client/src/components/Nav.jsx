@@ -17,7 +17,7 @@ function Nav({ }) {
         <nav className="navbar navbar-expand-md fixed-top">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">Ouroboros</NavLink>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">

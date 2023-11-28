@@ -36,9 +36,7 @@ function EditPassword() {
 
     return (
         <>
-            <div className="text-center">
-                <h3>Password</h3>
-            </div>
+            
 
             <form className="m-5">
 

@@ -1,8 +1,19 @@
 const { Assert } = require("../utility");
+const { ObjectId } = require("mongoose").Types;
 
 const TicketController = {
     async createTicket(req, res, { Ticket }) {
         const ticket = new Ticket(req.body);
+        const { userId } = req.body;
+
+        console.log(req.jwt);
+
+        Assert.authorizedUserId(userId, req.jwt._id);
+
+        ticket.postedBy = new ObjectId(userId);
+
+        console.log(ticket);
+
         return await ticket.save();
     },
     async getTickets(req, res, { Ticket }) {
