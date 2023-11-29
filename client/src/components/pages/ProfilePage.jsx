@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import Profile from "../forms/Profile";
 import Password from "../forms/EditPassword"
+import { useStateContext } from "../../StateContextProvider";
 
-function ProfilePage({ setIsHalf }) {
+function ProfilePage() {
 
+    const { setIsHalf } = useStateContext();
     setIsHalf(true);
 
     return (

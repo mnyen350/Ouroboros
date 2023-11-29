@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUserContext } from "../../UserContextProvider";
+import { useStateContext } from "../../StateContextProvider";
 import Alert from "../AlertComponent";
 
 function EditPassword() {
@@ -7,7 +7,7 @@ function EditPassword() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
 
-    const { user, updateUser } = useUserContext();
+    const { user, updateUser } = useStateContext();
 
     async function saveClick() {
         try {

@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
+import { useStateContext } from "../StateContextProvider";
 
-function Layout({ isHalf }) {
+function Layout() {
+    const { isHalf }= useStateContext();
     return (
         <>
             <Nav {...{}} />

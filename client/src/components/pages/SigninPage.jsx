@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import Signin from "../forms/Signin";
+import { useStateContext } from "../../StateContextProvider";
 
-function SigninPage({ setIsHalf, signInUser }) {
+function SigninPage() {
 
+    const { setIsHalf, signInUser } = useStateContext();
     setIsHalf(true);
 
     return (

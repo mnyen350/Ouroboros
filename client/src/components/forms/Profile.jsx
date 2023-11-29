@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserContext } from "../../UserContextProvider";
+import { useStateContext } from "../../StateContextProvider";
 import Alert from "../AlertComponent";
 
 
 function Profile() {
     const navigate = useNavigate();
-    const { user, updateUser } = useUserContext();
+    const { user, updateUser } = useStateContext();
     //console.log(user);
     
     // go back to home if not logged in

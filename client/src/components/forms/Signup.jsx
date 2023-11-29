@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUserContext } from "../../UserContextProvider";
+import { useStateContext } from "../../StateContextProvider";
 import Alert from "../AlertComponent";
 
 function Signup() {
@@ -14,7 +14,7 @@ function Signup() {
 
     const [alertMessage, setAlertMessage] = useState('');
 
-    const { createUser } = useUserContext();
+    const { createUser } = useStateContext();
 
     async function createClick() {
         try {

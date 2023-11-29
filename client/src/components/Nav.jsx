@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink, useNavigate } from "react-router-dom";
-import { useUserContext } from "../UserContextProvider";
+import { useStateContext } from "../StateContextProvider";
 
 function Nav({ }) {
-    const { user, signOutUser } = useUserContext();
+    const { user, signOutUser } = useStateContext();
 
     const isLoggedIn = user._id;
     const navigate = useNavigate();
@@ -25,9 +25,12 @@ function Nav({ }) {
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Home</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/tickets">Tickets</NavLink>
-                        </li>
+
+                        {isLoggedIn &&
+                            <li className="nav-item">
+                                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/tickets">Tickets</NavLink>
+                            </li>
+                        }
                     </ul>
 
                     <ul className="d-flex navbar-nav mb-2 mb-md-0">
@@ -40,7 +43,7 @@ function Nav({ }) {
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href={void(0)} onClick={signOutClick} >
+                                    <a className="nav-link" href={void (0)} onClick={signOutClick} >
                                         <FontAwesomeIcon icon={['fas', 'sign-out']} className="me-2" />
                                         <span>Sign Out</span>
                                     </a>

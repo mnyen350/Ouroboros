@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useUserContext } from '../../UserContextProvider';
+import { useStateContext } from '../../StateContextProvider';
 import Alert from "../AlertComponent";
 
 function CreateTicket() {
@@ -10,7 +10,7 @@ function CreateTicket() {
     const descPlaceholder = `Please describe your issue here, ensure your title is relevant to the issue.\r\nHigh priority generally are health hazard or severe property damage.`;
     const [alertMessage, setAlertMessage] = useState('');
 
-    const { user, createTicket } = useUserContext();
+    const { user, createTicket } = useStateContext();
 
     async function submitClick(){
         try {

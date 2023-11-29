@@ -1,7 +1,9 @@
 import Signup from "../forms/Signup";
+import { useStateContext } from "../../StateContextProvider";
 
-function SigninPage({ setIsHalf }) {
+function SigninPage() {
 
+    const { setIsHalf } = useStateContext();
     setIsHalf(true);
 
     return (

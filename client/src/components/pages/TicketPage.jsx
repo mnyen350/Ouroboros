@@ -1,10 +1,22 @@
+import { useState, useEffect } from "react";
 import CreateTicket from '../forms/CreateTicket';
 import Ticket from '../Ticket';
+import { useStateContext } from "../../StateContextProvider";
 
-function TicketPage({ setIsHalf }) {
-    //setIsHalf(false);
+function TicketPage() {
+    const [ tickets, setTickets ] = useState([]);
+    const { setIsHalf, getTickets } = useStateContext();
+    setIsHalf(false);
 
-    let tickets = ["hi", "mary", "bob", "blue", "reeee"];
+    async function loadTickets() {
+        const res = await getTickets();
+        if (res.success) {
+            setTickets(res.result);
+        }
+    }
+
+    // load the tickets
+    useEffect(() => loadTickets() && undefined, []);
 
     return (
         <>
@@ -15,7 +27,7 @@ function TicketPage({ setIsHalf }) {
 
             <div className="mt-5 d-grid gap-2 col-6 mx-auto text-center">
                 <h5>Current Ticket</h5>
-                {tickets.map((t,i) => <Ticket key={i} />)}
+                {tickets.map((t,i) => <Ticket key={t._id} { ...t } onDelete={() => loadTickets()} />)}
             </div>
         </>
     );

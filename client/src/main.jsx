@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { UserContextProvider } from './UserContextProvider.jsx'
+import { StateContextProvider } from './StateContextProvider.jsx'
 import App from './App.jsx'
 import './index.css'
 
@@ -14,8 +14,8 @@ library.add(fab, fas);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UserContextProvider>
+    <StateContextProvider>
       <App />
-    </UserContextProvider>
+    </StateContextProvider>
   </React.StrictMode>,
 )
