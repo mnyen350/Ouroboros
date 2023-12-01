@@ -7,6 +7,7 @@ import Alert from "../AlertComponent";
 function Signup() {
 
     const navigate = useNavigate();
+    
     const [firstName, setFirstName] = useState('jack');
     const [lastName, setLastName] = useState('red');
     const [email, setEmail] = useState('asd@aol.com');

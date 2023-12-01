@@ -4,7 +4,7 @@ const TicketController = require('../controllers/ticket.controller');
 const { jwtAuthorization, api } = require('../utility');
 
 router.post('/', jwtAuthorization, api(TicketController.createTicket));
-router.get('/', api(TicketController.getTickets));
+router.get('/', jwtAuthorization, api(TicketController.getTickets));
 router.delete('/', api(TicketController.deleteAllTickets));
 router.get('/:id', api(TicketController.getTicketById));
 router.put('/:id', api(TicketController.updateTicket));

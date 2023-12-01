@@ -52,8 +52,8 @@ const Api = {
     createTicket: async (userId, title, urgency, description) =>{
         return await Api.call(`api/tickets/`, 'POST', {userId, title, urgency, description});
     },
-    getTickets: async (title) =>{
-        return await Api.call(`api/tickets/`, 'GET', {title});
+    getTickets: async ({title, getAll, userId}) =>{
+        return await Api.call(`api/tickets/`, 'GET', {title, getAll, userId});
     },
     deleteTicket: async (id) =>{
         return await Api.call(`api/tickets/${id}`, 'DELETE');

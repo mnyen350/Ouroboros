@@ -8,7 +8,7 @@ const TicketController = {
 
         console.log(req.jwt);
 
-        Assert.authorizedUserId(userId, req.jwt._id);
+        Assert.authorizedUserId(userId, req.jwt);
 
         ticket.postedBy = new ObjectId(userId);
 
@@ -17,12 +17,31 @@ const TicketController = {
         return await ticket.save();
     },
     async getTickets(req, res, { Ticket }) {
-        const { title: partialTicketTitle } = req.query;
+        let { title: partialTicketTitle , userId } = req.query;
+
+        //console.log(userId);
+        //console.log(req.jwt);
+        Assert.authorizedUserId(userId, req.jwt);
+
+        // if requesting all tickets, ensure they're an admin
+        let filter = {};
+        if (!req.jwt.isAdmin) {
+            // if not an admin, filter only tickets posted by self
+            filter = { 
+                postedBy: userId
+            };
+        }
+
         if (partialTicketTitle) {
-            const tickets = await Ticket.find({ title: { $regex: new RegExp(partialTicketTitle), $options: "i" } });
+            const tickets = await Ticket.find({
+                title: { $regex: new RegExp(partialTicketTitle), $options: "i" },
+                ...filter
+            });
             return tickets;
         } else {
-            const tickets = await Ticket.find();
+            const tickets = await Ticket.find({
+                ...filter
+            });
             return tickets;
         }
     },

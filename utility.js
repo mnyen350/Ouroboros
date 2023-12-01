@@ -10,7 +10,8 @@ const Assert = {
     jwtTokenExists: (token) => Assert.validate(() => token, "Unauthorized request"),
     userSignInExists: (user) => Assert.validate(() => user, "Login failed! Please recheck the username and password and try again."),
     userEmailExists: (user, email) => Assert.validate(() => !user, `A user with the email ${email} already exists.`),
-    authorizedUserId: (userId, jwtId) => Assert.validate(() => userId == jwtId, `Unauthorized to make requests on behalf of user id ${userId}`),
+    authorizedUserId: (userId, jwt) => Assert.validate(() => jwt && userId == jwt._id, `Unauthorized to make requests on behalf of user id ${userId}`),
+    authorizedAdmin: (jwt) => Assert.validate(() => jwt && jwt.isAdmin, "Unauthorized admin request"),
     ticketExists: (ticket) => Assert.validate(() => ticket, "Ticket not found"),
     userExists: (user) => Assert.validate(() => user, "User not found")
 };
@@ -64,7 +65,10 @@ function jwtSign(obj) {
 }
 
 function createUserJwtToken(user) {
-    return jwtSign({ _id: user._id });
+    return jwtSign({ 
+        _id: user._id,
+        role: user.role
+    });
 }
 
 async function jwtAuthorization(req, res, next) {
@@ -74,6 +78,12 @@ async function jwtAuthorization(req, res, next) {
         Assert.jwtTokenExists(token);
 
         const data = jwt.verify(token, process.env.JWT_SECRET);
+        
+        if (data) {
+            if (data.role == 'admin')
+                data.isAdmin = true;
+        }
+
         req.jwt = data;
         next();
     } catch (ex) {
@@ -84,7 +94,7 @@ async function jwtAuthorization(req, res, next) {
             error: ex.toString()
         }));
     }
-};
+}
 
 module.exports = {
     api,

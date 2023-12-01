@@ -50,7 +50,7 @@ function StateContextProvider({ children }) {
     }
 
     async function getTickets(title = '') {
-        const res = await Api.getTickets(title);
+        const res = await Api.getTickets({ title, userId: user._id });
         if (res.success) {
             res.result = res.result.map(o => ({
                 ...o,

@@ -9,8 +9,8 @@ const userSchema = new Schema({
     updated: {type: Date, required: true },
     role : {
         type: String,
-        default: 'User',
-        enum: ['User', 'Admin']
+        default: 'user',
+        enum: ['user', 'admin']
     }
 });
 

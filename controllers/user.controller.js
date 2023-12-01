@@ -33,7 +33,7 @@ const UserController = {
     async fetchUser(req, res, { User }) {
         const { userId } = req.params;
 
-        Assert.authorizedUserId(userId, req.jwt._id);
+        Assert.authorizedUserId(userId, req.jwt);
 
         return await User.findOne({
             _id: userId
@@ -43,7 +43,7 @@ const UserController = {
         const { userId } = req.params;
         let { name, email, password } = req.body;
 
-        Assert.authorizedUserId(userId, req.jwt._id);
+        Assert.authorizedUserId(userId, req.jwt);
 
         email = email ? email.toLowerCase() : '';
 
@@ -70,7 +70,7 @@ const UserController = {
     async deleteUser(req, res, { User }) {
         const { userId } = req.params;
 
-        Assert.authorizedUserId(userId, req.jwt._id);
+        Assert.authorizedUserId(userId, req.jwt);
 
         return await User.deleteOne({
             _id: userId

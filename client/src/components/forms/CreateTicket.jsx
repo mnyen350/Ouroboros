@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useStateContext } from '../../StateContextProvider';
 import Alert from "../AlertComponent";
 
-function CreateTicket() {
+function CreateTicket({ onSuccess }) {
 
     const [title, setTitle] = useState('General Ticket');
     const [urgency, setUrgency] = useState('low');
@@ -29,6 +29,7 @@ function CreateTicket() {
             }
             else{
                 setAlertMessage("Created successfully.");
+                onSuccess();
             }
             console.log(result);
         }
