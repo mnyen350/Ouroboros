@@ -61,6 +61,19 @@ function StateContextProvider({ children }) {
         return res;
     }
 
+    useEffect(() => {
+
+        async function checkUserLoggedIn() {
+            const res = await Api.fetchUser();
+            if (res.success) {
+                setUser(res.result);
+            }
+        }
+
+        checkUserLoggedIn();
+
+    }, []);
+
     const values = useMemo(() => {
         return {
             // layout

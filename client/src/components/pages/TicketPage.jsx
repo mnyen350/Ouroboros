@@ -17,7 +17,7 @@ function TicketPage() {
     }
 
     // load the tickets
-    useEffect(() => loadTickets() && undefined, []);
+    useEffect(() => loadTickets() && undefined, [user]);
 
     return (
         <>

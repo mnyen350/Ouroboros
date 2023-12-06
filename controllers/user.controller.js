@@ -31,7 +31,10 @@ const UserController = {
         return await User.find({});
     },
     async fetchUser(req, res, { User }) {
-        const { userId } = req.params;
+        let { userId } = req.params;
+
+        if (userId == 0) // default to self
+            userId = req.jwt._id;
 
         Assert.authorizedUserId(userId, req.jwt);
 

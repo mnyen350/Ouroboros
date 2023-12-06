@@ -16,7 +16,7 @@ function Nav({ }) {
     return (
         <nav className="navbar navbar-expand-md fixed-top">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">Ouroboros</NavLink>
+                <NavLink className="navbar-brand" to="/">Soloboros</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="navbar-toggler-icon"></span>
                 </button>
