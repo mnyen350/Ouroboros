@@ -16,7 +16,7 @@ const authRouter = require('./routes/auth.routes');
 const app = express();
 
 app.use(cors({ 
-  origin: ["http://localhost:3000", "http://localhost:3001", "*"],
+  origin: ["http://localhost:3000", "http://localhost:3001", "http://ec2-3-23-129-208.us-east-2.compute.amazonaws.com", "*"],
   credentials: true
 }));
 app.use(logger('dev'));

@@ -1,4 +1,4 @@
-const BASE_API_ENDPOINT = `http://localhost:3000`;
+const BASE_API_ENDPOINT="http://ec2-3-23-129-208.us-east-2.compute.amazonaws.com:3000";
 
 const Api = {
     call: async (endpoint, method, args) => {
