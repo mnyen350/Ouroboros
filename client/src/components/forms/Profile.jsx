@@ -13,7 +13,7 @@ function Profile() {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState(user.email);
+    const [email, setEmail] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
@@ -33,6 +33,7 @@ function Profile() {
 
         setFirstName(_firstName);
         setLastName(_lastName);
+        setEmail(user.email);
 
     }, [user]);
 
